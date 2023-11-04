@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CreateLetter extends StatelessWidget {
   const CreateLetter({Key? key}) : super(key: key);
@@ -34,8 +36,8 @@ class CreateLetter extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                TextButton(
-                  onPressed: () {},
+                GestureDetector(
+                  onTap: () => _launchURL,
                   child: Text(
                     "Cancel",
                     style: TextStyle(
@@ -44,15 +46,6 @@ class CreateLetter extends StatelessWidget {
                       fontSize: 20,
                       fontWeight: FontWeight.w400,
                     ),
-                  ),
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                    ),
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.white),
                   ),
                 ),
                 ElevatedButton(
@@ -85,5 +78,12 @@ class CreateLetter extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+_launchURL() async {
+  final Uri url = Uri.parse('https://flutter.dev');
+  if (!await launchUrl(url)) {
+    throw Exception('Could not launch $url');
   }
 }

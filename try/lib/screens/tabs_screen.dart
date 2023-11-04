@@ -28,69 +28,72 @@ class _NavigationExampleState extends State<NavigationExample> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        bottomNavigationBar: NavigationBar(
-          backgroundColor: Color(0xffF4F8FF),
-          animationDuration: Duration(milliseconds: 1500),
-          labelBehavior: labelBehavior,
-          selectedIndex: currentPageIndex,
-          onDestinationSelected: (int index) {
-            setState(() {
-              currentPageIndex = index;
-            });
-          },
-          destinations: const <Widget>[
-            NavigationDestination(
-              selectedIcon: Icon(
-                Icons.workspace_premium_outlined,
-                color: Colors.black,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+          bottomNavigationBar: NavigationBar(
+            backgroundColor: Color(0xffF4F8FF),
+            animationDuration: Duration(milliseconds: 1500),
+            labelBehavior: labelBehavior,
+            selectedIndex: currentPageIndex,
+            onDestinationSelected: (int index) {
+              setState(() {
+                currentPageIndex = index;
+              });
+            },
+            destinations: const <Widget>[
+              NavigationDestination(
+                selectedIcon: Icon(
+                  Icons.workspace_premium_outlined,
+                  color: Colors.black,
+                ),
+                icon: Icon(
+                  Icons.workspace_premium_outlined,
+                  color: Color(0xff002856),
+                ),
+                label: 'LG Requests',
               ),
-              icon: Icon(
-                Icons.workspace_premium_outlined,
-                color: Color(0xff002856),
+              NavigationDestination(
+                selectedIcon: Icon(
+                  Icons.monetization_on_outlined,
+                  color: Colors.black,
+                ),
+                icon: Icon(
+                  Icons.monetization_on_outlined,
+                  color: Color(0xff002856),
+                ),
+                label: 'Finance Requests',
               ),
-              label: 'LG Requests',
-            ),
-            NavigationDestination(
-              selectedIcon: Icon(
-                Icons.monetization_on_outlined,
-                color: Colors.black,
+              NavigationDestination(
+                selectedIcon: Icon(
+                  Icons.history_outlined,
+                  color: Colors.black,
+                ),
+                icon: Icon(
+                  Icons.history_outlined,
+                  color: Color(0xff002856),
+                ),
+                label: 'Activity',
               ),
-              icon: Icon(
-                Icons.monetization_on_outlined,
-                color: Color(0xff002856),
+              NavigationDestination(
+                selectedIcon: Icon(
+                  Icons.electrical_services_outlined,
+                  color: Colors.black,
+                ),
+                icon: Icon(
+                  Icons.electrical_services_outlined,
+                  color: Color(0xff002856),
+                ),
+                label: 'Connect Data',
               ),
-              label: 'Finance Requests',
-            ),
-            NavigationDestination(
-              selectedIcon: Icon(
-                Icons.history_outlined,
-                color: Colors.black,
-              ),
-              icon: Icon(
-                Icons.history_outlined,
-                color: Color(0xff002856),
-              ),
-              label: 'Activity',
-            ),
-            NavigationDestination(
-              selectedIcon: Icon(
-                Icons.electrical_services_outlined,
-                color: Colors.black,
-              ),
-              icon: Icon(
-                Icons.electrical_services_outlined,
-                color: Color(0xff002856),
-              ),
-              label: 'Connect Data',
-            ),
-          ],
-        ),
-        body: [
-          HomePage(),
-          Scaffold(),
-          Scaffold(),
-          Scaffold(),
-        ][currentPageIndex]);
+            ],
+          ),
+          body: [
+            HomePage(),
+            Scaffold(),
+            Scaffold(),
+            Scaffold(),
+          ][currentPageIndex]),
+    );
   }
 }

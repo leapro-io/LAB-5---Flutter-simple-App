@@ -13,6 +13,8 @@ class HomePage extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
 
     return SafeArea(
+      top: true,
+      bottom: false,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
@@ -67,10 +69,15 @@ class HomePage extends StatelessWidget {
           ),
           backgroundColor: const Color(0xffC3E7FF),
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
+        body: Scrollbar(
+          thumbVisibility: true,
+          thickness: 5,
+          radius: const Radius.circular(50),
+          interactive: true,
+          trackVisibility: true,
+          child: CustomScrollView(
+            physics: const BouncingScrollPhysics(),
+            slivers: [
               // Expanded(
               //   child: GridView.count(
               //     shrinkWrap: true,
@@ -164,53 +171,73 @@ class HomePage extends StatelessWidget {
               //     ],
               //   ),
               // ),
-              ExpansionTile(
-                title: Text(
-                  "Riyadh Development Authority",
-                  style: TextStyle(
-                    color: Color(0xff002856),
-                    fontFamily: 'Calibri',
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                children: [
-                  CustomLV(
-                    i: i,
-                  ),
-                  CustomLV(
-                    i: i,
-                  ),
-                  CustomLV(
-                    i: i,
-                  ),
-                  CustomLV(
-                    i: i,
-                  ),
-                  CustomLV(
-                    i: i,
-                  ),
-                ],
+              SliverToBoxAdapter(
+                child: ExpansionTile(
+                    title: Text(
+                      "Riyadh Development Authority",
+                      style: TextStyle(
+                        color: Color(0xff002856),
+                        fontFamily: 'Calibri',
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    children: [
+                      ListView.builder(
+                          itemCount: 15,
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            return CustomLV(
+                              i: i,
+                            );
+                          }),
+                    ]),
               ),
-              ExpansionTile(
-                title: Text(
-                  "Royal Commission for Riyadh City",
-                  style: TextStyle(
-                    color: Color(0xff002856),
-                    fontFamily: 'Calibri',
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                children: [
-                  CustomLV(
-                    i: i,
-                  ),
-                  CustomLV(
-                    i: i,
-                  ),
-                ],
+              SliverToBoxAdapter(
+                child: ExpansionTile(
+                    title: Text(
+                      "Riyadh Development Authority",
+                      style: TextStyle(
+                        color: Color(0xff002856),
+                        fontFamily: 'Calibri',
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                    children: [
+                      ListView.builder(
+                          itemCount: 15,
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            return CustomLV(
+                              i: i,
+                            );
+                          }),
+                    ]),
               ),
+              // SliverToBoxAdapter(
+              //   child: ExpansionTile(
+              //     title: Text(
+              //       "Royal Commission for Riyadh City",
+              //       style: TextStyle(
+              //         color: Color(0xff002856),
+              //         fontFamily: 'Calibri',
+              //         fontSize: 18,
+              //         fontWeight: FontWeight.w700,
+              //       ),
+              //     ),
+              //     children: [
+              //       CustomLV(
+              //         i: i,
+              //       ),
+              //       CustomLV(
+              //         i: i,
+              //       ),
+              //     ],
+              //   ),
+              // ),
             ],
           ),
         ),

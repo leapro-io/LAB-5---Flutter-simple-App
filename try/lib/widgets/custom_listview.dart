@@ -12,56 +12,59 @@ class CustomLV extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    return Card(
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          bottomRight: Radius.circular(20),
-        ),
-      ),
-      shadowColor: Colors.black,
-      elevation: 2,
-      child: Container(
-        width: width * 0.9,
-        decoration: const BoxDecoration(
-          color: Color(0xff0F4F8FF),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
+      child: Card(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20),
             bottomRight: Radius.circular(20),
           ),
         ),
-        child: ListTile(
-          title: Text(
-            items[i].title,
-            style: const TextStyle(
-              color: Color(0xff002856),
-              fontFamily: 'Calibri',
-              fontSize: 22,
-              fontWeight: FontWeight.w700,
+        shadowColor: Colors.black,
+        elevation: 2,
+        child: Container(
+          width: width * 0.9,
+          decoration: const BoxDecoration(
+            color: Color(0xff0F4F8FF),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              bottomRight: Radius.circular(20),
             ),
           ),
-          subtitle: Text(
-            items[i].subtitle,
-            style: const TextStyle(
-              color: Color(0xff002856),
-              fontFamily: 'Calibri',
-              fontSize: 18,
-              fontWeight: FontWeight.w400,
-            ),
-          ),
-          trailing: Column(
-            children: [
-              Image.asset(items[i].trailing),
-              Text(
-                items[i].status,
-                style: const TextStyle(
-                  color: Color(0xff002856),
-                  fontFamily: 'Calibri',
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                ),
+          child: ListTile(
+            title: Text(
+              items[i].title,
+              style: const TextStyle(
+                color: Color(0xff002856),
+                fontFamily: 'Calibri',
+                fontSize: 22,
+                fontWeight: FontWeight.w700,
               ),
-            ],
+            ),
+            subtitle: Text(
+              items[i].subtitle,
+              style: const TextStyle(
+                color: Color(0xff002856),
+                fontFamily: 'Calibri',
+                fontSize: 18,
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            trailing: Column(
+              children: [
+                Image.asset(items[i].trailing),
+                Text(
+                  items[i].status,
+                  style: const TextStyle(
+                    color: Color(0xff002856),
+                    fontFamily: 'Calibri',
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
