@@ -1,8 +1,8 @@
-import 'package:animated_flutter_widgets/animations/long_tap_animation.dart';
+import 'package:animated_flutter_widgets/animated_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:animated_flutter_widgets/animations/button_tap_animation.dart';
 import 'package:native_animated_splash/screens/createletter.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
-
 import '../widgets/custom_listview.dart';
 
 class HomePage extends StatelessWidget {
@@ -185,13 +185,25 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     children: [
-                      ListView.builder(
+                      AnimatedListViewBuilder(
+                          animationDuration: const Duration(milliseconds: 500),
+                          animationType: ScrollWidgetAnimationType.scaleOut,
                           itemCount: 15,
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           itemBuilder: (context, index) {
-                            return LongTapAnimation(
-                              pressedScale: 0.96,
+                            return
+
+                                //     Cube3DAnimation(
+                                //   sideLength: 100,
+                                //   duration: Duration(seconds: 4),
+                                //   isContinuous: false,
+                                //   child: CustomLV(
+                                //     i: i,
+                                //   ),
+                                // );
+                                ButtonTapAnimation(
+                              scaleValue: 0.96,
                               child: CustomLV(
                                 i: i,
                               ),
@@ -211,7 +223,9 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     children: [
-                      ListView.builder(
+                      AnimatedListViewBuilder(
+                          animationDuration: const Duration(milliseconds: 1000),
+                          animationType: ScrollWidgetAnimationType.leftScale,
                           itemCount: 15,
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
@@ -222,7 +236,7 @@ class HomePage extends StatelessWidget {
                               enableLongTapRepeatEvent: false,
                               longTapRepeatDuration:
                                   const Duration(milliseconds: 100),
-                                beginDuration: const Duration(milliseconds: 20),
+                              beginDuration: const Duration(milliseconds: 20),
                               endDuration: const Duration(milliseconds: 120),
                               beginCurve: Curves.linear,
                               endCurve: Curves.fastOutSlowIn,
