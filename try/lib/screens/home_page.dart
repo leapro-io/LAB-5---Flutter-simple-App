@@ -1,5 +1,7 @@
+import 'package:animated_flutter_widgets/animations/long_tap_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:native_animated_splash/screens/createletter.dart';
+import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 import '../widgets/custom_listview.dart';
 
@@ -19,14 +21,14 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
-          actions: [
+          actions: const [
             Icon(
               Icons.notifications_none,
-              color: const Color(0xff002856),
+              color: Color(0xff002856),
             ),
             Icon(
               Icons.person_outline,
-              color: const Color(0xff002856),
+              color: Color(0xff002856),
             )
           ],
           leading: Image.asset('assets/images/Leapro-logo-new2-blue 1.png'),
@@ -173,7 +175,7 @@ class HomePage extends StatelessWidget {
               // ),
               SliverToBoxAdapter(
                 child: ExpansionTile(
-                    title: Text(
+                    title: const Text(
                       "Riyadh Development Authority",
                       style: TextStyle(
                         color: Color(0xff002856),
@@ -188,15 +190,18 @@ class HomePage extends StatelessWidget {
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           itemBuilder: (context, index) {
-                            return CustomLV(
-                              i: i,
+                            return LongTapAnimation(
+                              pressedScale: 0.96,
+                              child: CustomLV(
+                                i: i,
+                              ),
                             );
                           }),
                     ]),
               ),
               SliverToBoxAdapter(
                 child: ExpansionTile(
-                    title: Text(
+                    title: const Text(
                       "Riyadh Development Authority",
                       style: TextStyle(
                         color: Color(0xff002856),
@@ -211,8 +216,19 @@ class HomePage extends StatelessWidget {
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           itemBuilder: (context, index) {
-                            return CustomLV(
-                              i: i,
+                            return ZoomTapAnimation(
+                              begin: 1.0,
+                              end: 0.97,
+                              enableLongTapRepeatEvent: false,
+                              longTapRepeatDuration:
+                                  const Duration(milliseconds: 100),
+                                beginDuration: const Duration(milliseconds: 20),
+                              endDuration: const Duration(milliseconds: 120),
+                              beginCurve: Curves.linear,
+                              endCurve: Curves.fastOutSlowIn,
+                              child: CustomLV(
+                                i: i,
+                              ),
                             );
                           }),
                     ]),

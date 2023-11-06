@@ -32,8 +32,8 @@ class _NavigationExampleState extends State<NavigationExample> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
           bottomNavigationBar: NavigationBar(
-            backgroundColor: Color(0xffF4F8FF),
-            animationDuration: Duration(milliseconds: 1500),
+            backgroundColor: const Color(0xffF4F8FF),
+            animationDuration: const Duration(milliseconds: 1500),
             labelBehavior: labelBehavior,
             selectedIndex: currentPageIndex,
             onDestinationSelected: (int index) {
@@ -89,10 +89,10 @@ class _NavigationExampleState extends State<NavigationExample> {
             ],
           ),
           body: [
-            HomePage(),
-            Scaffold(),
-            Scaffold(),
-            Scaffold(),
+            const HomePage(),
+            const Scaffold(),
+            const Scaffold(),
+            const Scaffold(),
           ][currentPageIndex]),
     );
   }

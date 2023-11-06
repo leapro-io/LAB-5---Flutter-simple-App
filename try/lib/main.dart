@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:native_animated_splash/screens/home_page.dart';
 import 'package:native_animated_splash/screens/tabs_screen.dart';
 
 void main() {

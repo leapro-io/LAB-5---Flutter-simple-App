@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CreateLetter extends StatelessWidget {
@@ -14,13 +13,13 @@ class CreateLetter extends StatelessWidget {
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back_ios_new,
                 color: Color(0xff002856),
               )),
           backgroundColor: Colors.white,
           elevation: 0,
-          title: Text(
+          title: const Text(
             'New LG',
             style: TextStyle(
               color: Color(0xff002856),
@@ -32,13 +31,17 @@ class CreateLetter extends StatelessWidget {
         ),
         body: Column(
           children: [
-            Spacer(),
+            const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 GestureDetector(
-                  onTap: () => _launchURL,
-                  child: Text(
+                  onTap: () {
+                    Navigator.pop(context);
+                  }
+                  // => _launchURL
+                  ,
+                  child: const Text(
                     "Cancel",
                     style: TextStyle(
                       color: Color(0xff009AD7),
@@ -50,7 +53,7 @@ class CreateLetter extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {},
-                  child: Text(
+                  child: const Text(
                     "Save",
                     style: TextStyle(
                       color: Color(0xff002856),
@@ -61,7 +64,7 @@ class CreateLetter extends StatelessWidget {
                   ),
                   style: ButtonStyle(
                     backgroundColor:
-                        MaterialStateProperty.all<Color>(Color(0xffC3E7FF)),
+                        MaterialStateProperty.all<Color>(const Color(0xffC3E7FF)),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50),
@@ -81,6 +84,7 @@ class CreateLetter extends StatelessWidget {
   }
 }
 
+// ignore: unused_element
 _launchURL() async {
   final Uri url = Uri.parse('https://flutter.dev');
   if (!await launchUrl(url)) {

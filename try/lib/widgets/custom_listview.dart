@@ -1,3 +1,4 @@
+import 'package:animated_flutter_widgets/animations/long_tap_animation.dart';
 import 'package:flutter/material.dart';
 
 import '../models/listtile_model.dart';
@@ -26,7 +27,7 @@ class CustomLV extends StatelessWidget {
         child: Container(
           width: width * 0.9,
           decoration: const BoxDecoration(
-            color: Color(0xff0F4F8FF),
+            color: Color(0xff0f4f8ff),
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20),
               bottomRight: Radius.circular(20),
