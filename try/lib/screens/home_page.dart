@@ -1,6 +1,5 @@
 import 'package:animated_flutter_widgets/animated_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:animated_flutter_widgets/animations/button_tap_animation.dart';
 import 'package:native_animated_splash/screens/createletter.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 import '../widgets/custom_listview.dart';
@@ -185,9 +184,7 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     children: [
-                      AnimatedListViewBuilder(
-                          animationDuration: const Duration(milliseconds: 500),
-                          animationType: ScrollWidgetAnimationType.scaleOut,
+                      ListView.builder(
                           itemCount: 15,
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
@@ -202,10 +199,26 @@ class HomePage extends StatelessWidget {
                                 //     i: i,
                                 //   ),
                                 // );
-                                ButtonTapAnimation(
-                              scaleValue: 0.96,
-                              child: CustomLV(
-                                i: i,
+                                ZoomTapAnimation(
+                              begin: 1.0,
+                              end: 0.97,
+                              enableLongTapRepeatEvent: false,
+                              longTapRepeatDuration:
+                                  const Duration(milliseconds: 100),
+                              beginDuration: const Duration(milliseconds: 20),
+                              endDuration: const Duration(milliseconds: 120),
+                              beginCurve: Curves.linear,
+                              endCurve: Curves.fastOutSlowIn,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      PopAndScaleTransition(
+                                          page: const CreateLetter()));
+                                },
+                                child: CustomLV(
+                                  i: i,
+                                ),
                               ),
                             );
                           }),
@@ -223,9 +236,7 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     children: [
-                      AnimatedListViewBuilder(
-                          animationDuration: const Duration(milliseconds: 1000),
-                          animationType: ScrollWidgetAnimationType.leftScale,
+                      ListView.builder(
                           itemCount: 15,
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
@@ -240,8 +251,16 @@ class HomePage extends StatelessWidget {
                               endDuration: const Duration(milliseconds: 120),
                               beginCurve: Curves.linear,
                               endCurve: Curves.fastOutSlowIn,
-                              child: CustomLV(
-                                i: i,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      FadePageAnimation(
+                                          page: const CreateLetter()));
+                                },
+                                child: CustomLV(
+                                  i: i,
+                                ),
                               ),
                             );
                           }),
